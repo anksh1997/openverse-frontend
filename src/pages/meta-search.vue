@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent } from '#app'
 
 import VContentPage from '~/components/VContentPage.vue'
 import VLink from '~/components/VLink.vue'

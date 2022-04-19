@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from '@nuxtjs/composition-api'
+import { computed, defineComponent, PropType } from '#app'
 
 import VIcon, { IconProps } from '~/components/VIcon/VIcon.vue'
 import VButton from '~/components/VButton.vue'

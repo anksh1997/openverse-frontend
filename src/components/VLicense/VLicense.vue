@@ -17,12 +17,9 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  PropType,
-  useContext,
-} from '@nuxtjs/composition-api'
+import { computed, defineComponent, PropType } from '#app'
+
+import { useI18n } from '~/composables/use-i18n'
 
 import { ALL_LICENSES, License, LICENSE_ICONS } from '~/constants/license'
 
@@ -63,7 +60,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const { i18n } = useContext()
+    const i18n = useI18n()
 
     const iconNames = computed(() => getElements(props.license))
     const licenseName = computed(() => {

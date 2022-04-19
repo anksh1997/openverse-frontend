@@ -56,16 +56,16 @@ import {
   inject,
   provide,
   ref,
-  useContext,
   useRouter,
   watch,
-} from '@nuxtjs/composition-api'
+} from '#app'
 
 import { ALL_MEDIA } from '~/constants/media'
 import { isMinScreen } from '~/composables/use-media-query'
 import { useMatchSearchRoutes } from '~/composables/use-match-routes'
 import { useFilterSidebarVisibility } from '~/composables/use-filter-sidebar-visibility'
 import { useI18nResultsCount } from '~/composables/use-i18n-utilities'
+import { useI18n, useLocalePath } from '~/composables/use-i18n'
 import { useMediaStore } from '~/stores/media'
 import { useSearchStore } from '~/stores/search'
 
@@ -92,7 +92,8 @@ const VHeader = defineComponent({
   setup() {
     const mediaStore = useMediaStore()
     const searchStore = useSearchStore()
-    const { app, i18n } = useContext()
+    const localePath = useLocalePath()
+    const i18n = useI18n()
     const router = useRouter()
 
     const { matches: isSearchRoute } = useMatchSearchRoutes()
@@ -198,7 +199,7 @@ const VHeader = defineComponent({
         searchStore.setSearchTerm(searchTerm.value)
         searchStore.setSearchType(searchType)
       }
-      const newPath = app.localePath({
+      const newPath = localePath({
         path: `/search/${searchType === 'all' ? '' : searchType}`,
         query: searchStore.searchQueryParams,
       })

@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent } from '#app'
 
 import { DMCA_FORM_URL } from '~/constants/content-report'
 

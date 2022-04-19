@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { defineComponent, toRefs, ref, provide } from '@nuxtjs/composition-api'
+import { defineComponent, toRefs, ref, provide } from '#app'
 
 import { usePopoverContent } from '~/composables/use-popover-content'
 import { warn } from '~/utils/console'

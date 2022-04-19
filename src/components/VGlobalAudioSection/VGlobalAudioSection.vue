@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { useRoute, watch, computed } from '@nuxtjs/composition-api'
+import { useRoute, watch, computed } from '#app'
 
 import { AUDIO } from '~/constants/media'
 import { useActiveAudio } from '~/composables/use-active-audio'
@@ -95,7 +95,7 @@ export default {
 
     /* Router observation */
 
-    const routeName = computed(() => route.value.name)
+    const routeName = computed(() => route.name)
     watch(routeName, (routeNameVal, oldRouteNameVal) => {
       if (
         oldRouteNameVal.includes('audio') &&

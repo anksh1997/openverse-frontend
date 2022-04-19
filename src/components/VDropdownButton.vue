@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent } from '#app'
 
 import { keycodes } from '~/constants/key-codes'
 

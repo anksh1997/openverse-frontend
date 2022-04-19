@@ -50,13 +50,7 @@
 </template>
 
 <script>
-import {
-  defineComponent,
-  inject,
-  ref,
-  computed,
-  watch,
-} from '@nuxtjs/composition-api'
+import { defineComponent, inject, ref, computed, watch } from '#app'
 
 import { warn } from '~/utils/console'
 

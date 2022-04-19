@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { computed, defineComponent } from '@nuxtjs/composition-api'
+import { computed, defineComponent } from '#app'
 
 import { ALL_MEDIA, AUDIO, IMAGE } from '~/constants/media'
 import { isValidSearchType } from '~/utils/prop-validators'

@@ -41,7 +41,7 @@ import {
   reactive,
   ref,
   watch,
-} from '@nuxtjs/composition-api'
+} from '#app'
 
 import usePages from '~/composables/use-pages'
 import useSearchType from '~/composables/use-search-type'

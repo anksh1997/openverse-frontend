@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, useMeta } from '@nuxtjs/composition-api'
+import { computed, defineComponent, useMeta } from '#app'
 
 import { propTypes } from '~/pages/search/search-page.types'
 import { useLoadMore } from '~/composables/use-load-more'

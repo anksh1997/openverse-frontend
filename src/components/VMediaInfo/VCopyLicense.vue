@@ -67,8 +67,9 @@
 </template>
 
 <script>
-import { defineComponent, ref, useContext } from '@nuxtjs/composition-api'
+import { defineComponent, ref } from '#app'
 
+import { useI18n } from '~/composables/use-i18n'
 import { getAttribution } from '~/utils/attribution-html'
 
 import VCopyButton from '~/components/VCopyButton.vue'
@@ -82,7 +83,7 @@ const VCopyLicense = defineComponent({
     },
   },
   setup(props) {
-    const { i18n } = useContext()
+    const i18n = useI18n()
 
     const activeTab = ref('rich')
     const tabs = ['rich', 'html', 'plain']

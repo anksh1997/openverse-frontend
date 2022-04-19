@@ -28,7 +28,9 @@
 </template>
 
 <script>
-import { ref, onMounted, useContext, computed } from '@nuxtjs/composition-api'
+import { ref, onMounted, computed } from '#app'
+
+import { useI18n } from '~/composables/use-i18n'
 
 import { rand, hash } from '~/utils/prng'
 import { lerp, dist, bezier } from '~/utils/math'
@@ -49,7 +51,7 @@ export default {
     },
   },
   setup(props) {
-    const { i18n } = useContext()
+    const i18n = useI18n()
     const helpText = computed(() =>
       i18n.t('audio-thumbnail.alt', {
         title: props.audio.title,

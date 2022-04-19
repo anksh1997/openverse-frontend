@@ -36,7 +36,7 @@
   </VItemGroup>
 </template>
 <script>
-import { computed, defineComponent } from '@nuxtjs/composition-api'
+import { computed, defineComponent } from '#app'
 
 import { isDev } from '~/utils/node-env'
 

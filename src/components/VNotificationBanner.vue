@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from '@nuxtjs/composition-api'
+import { defineComponent, PropType } from '#app'
 
 import { useI18n } from '~/composables/use-i18n'
 import { useStorage } from '~/composables/use-storage'

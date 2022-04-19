@@ -1,4 +1,4 @@
-import { ref } from '@nuxtjs/composition-api'
+import { ref } from '#app'
 import { getDocument } from 'reakit-utils/getDocument'
 
 /**

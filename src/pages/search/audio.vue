@@ -22,13 +22,9 @@
 </template>
 
 <script>
-import {
-  computed,
-  defineComponent,
-  useContext,
-  useMeta,
-} from '@nuxtjs/composition-api'
+import { computed, defineComponent, useMeta } from '#app'
 
+import { useI18n } from '~/composables/use-i18n'
 import { useLoadMore } from '~/composables/use-load-more'
 import { isMinScreen } from '~/composables/use-media-query'
 import { useBrowserIsMobile } from '~/composables/use-browser-detection'
@@ -50,7 +46,7 @@ const AudioSearch = defineComponent({
   },
   props: propTypes,
   setup(props) {
-    const { i18n } = useContext()
+    const i18n = useI18n()
 
     useMeta({ title: `${props.searchTerm} | Openverse` })
 

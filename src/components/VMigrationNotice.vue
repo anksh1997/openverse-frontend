@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from '@nuxtjs/composition-api'
+import { defineComponent, computed } from '#app'
 
 import { useNavigationStore } from '~/stores/navigation'
 

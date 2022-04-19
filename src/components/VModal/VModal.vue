@@ -31,13 +31,7 @@
 </template>
 
 <script>
-import {
-  defineComponent,
-  ref,
-  watch,
-  reactive,
-  computed,
-} from '@nuxtjs/composition-api'
+import { defineComponent, ref, watch, reactive, computed } from '#app'
 
 import { useBodyScrollLock } from '~/composables/use-body-scroll-lock'
 

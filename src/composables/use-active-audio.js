@@ -1,10 +1,10 @@
-import { ref } from '@nuxtjs/composition-api'
+import { ref } from '#app'
 
 /**
  * This global ref is SSR safe because it will only
  * change internal value based on client side interaction.
  *
- * @type {import('@nuxtjs/composition-api').Ref<HTMLAudioElement | undefined>}
+ * @type {import('#app').Ref<HTMLAudioElement | undefined>}
  */
 const obj = ref(undefined)
 

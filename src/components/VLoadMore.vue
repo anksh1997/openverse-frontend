@@ -4,13 +4,14 @@
     variant="full"
     type="button"
     :disabled="isFetching"
-    @click="onLoadMore"
+    @click="$emit('onLoadMore')"
   >
-    {{ buttonLabel }}
+    {{ $t('browse-page.load') }}
   </VButton>
 </template>
+
 <script lang="ts">
-import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
+import { defineComponent } from '#app'
 
 import VButton from '~/components/VButton.vue'
 
@@ -24,22 +25,6 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
-  },
-  setup(_, { emit }) {
-    const { i18n } = useContext()
-
-    const buttonLabel = computed(() => {
-      return i18n.t('browse-page.load')
-    })
-
-    const onLoadMore = () => {
-      emit('onLoadMore')
-    }
-
-    return {
-      buttonLabel,
-      onLoadMore,
-    }
   },
 })
 </script>

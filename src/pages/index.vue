@@ -132,10 +132,11 @@
 </template>
 
 <script>
-import { onMounted, ref, useContext, useRouter } from '@nuxtjs/composition-api'
+import { onMounted, ref, useRouter } from '#app'
 
 import { ALL_MEDIA, supportedSearchTypes } from '~/constants/media'
 import { isMinScreen } from '~/composables/use-media-query'
+import { useLocalePath } from '~/composables/use-i18n'
 
 import { useMediaStore } from '~/stores/media'
 import { useSearchStore } from '~/stores/search'
@@ -172,7 +173,7 @@ const HomePage = {
     ],
   },
   setup() {
-    const { app } = useContext()
+    const localePath = useLocalePath()
     const router = useRouter()
     const mediaStore = useMediaStore()
     const searchStore = useSearchStore()
@@ -191,7 +192,7 @@ const HomePage = {
         ...imageItem,
         src: require(`~/assets/homepage_images/${setItem.prefix}-${imageItem.index}.jpg`),
         url: router.resolve(
-          app.localePath({
+          localePath({
             name: 'image-id',
             params: { id: imageItem.identifier },
           })
@@ -219,7 +220,7 @@ const HomePage = {
       searchStore.setSearchTerm(searchTerm.value)
       searchStore.setSearchType(searchType.value)
       const query = searchStore.searchQueryParams
-      const newPath = app.localePath({
+      const newPath = localePath({
         path: `/search/${
           searchType.value === ALL_MEDIA ? '' : searchType.value
         }`,

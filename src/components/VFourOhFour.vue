@@ -45,12 +45,9 @@
 </template>
 
 <script>
-import {
-  defineComponent,
-  ref,
-  useContext,
-  useRouter,
-} from '@nuxtjs/composition-api'
+import { defineComponent, ref, useRouter } from '#app'
+
+import { useLocalePath } from '~/composables/use-i18n'
 
 import { useMediaStore } from '~/stores/media'
 import { useSearchStore } from '~/stores/search'
@@ -75,7 +72,7 @@ const VFourOhFour = defineComponent({
   setup() {
     const mediaStore = useMediaStore()
     const searchStore = useSearchStore()
-    const { app } = useContext()
+    const localePath = useLocalePath()
     const router = useRouter()
 
     const searchTerm = ref('')
@@ -90,7 +87,7 @@ const VFourOhFour = defineComponent({
       await mediaStore.fetchMedia()
 
       router.push(
-        app.localePath({
+        localePath({
           path: `/search`,
           query: { q: searchTerm.value },
         })

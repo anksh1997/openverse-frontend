@@ -25,13 +25,9 @@
   </VButton>
 </template>
 <script>
-import {
-  computed,
-  defineComponent,
-  inject,
-  useContext,
-} from '@nuxtjs/composition-api'
+import { computed, defineComponent, inject } from '#app'
 
+import { useI18n } from '~/composables/use-i18n'
 import { ALL_MEDIA } from '~/constants/media'
 import useSearchType from '~/composables/use-search-type'
 import { isMinScreen } from '~/composables/use-media-query'
@@ -62,7 +58,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const { i18n } = useContext()
+    const i18n = useI18n()
     const isHeaderScrolled = inject('isHeaderScrolled', null)
     const isMinScreenMd = isMinScreen('md', { shouldPassInSSR: true })
 

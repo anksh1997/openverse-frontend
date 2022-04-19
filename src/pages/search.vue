@@ -28,7 +28,7 @@
 
 <script>
 import { isShallowEqualObjects } from '@wordpress/is-shallow-equal'
-import { computed, inject } from '@nuxtjs/composition-api'
+import { computed, inject } from '#app'
 
 import { supportedSearchTypes } from '~/constants/media'
 import { isMinScreen } from '~/composables/use-media-query'

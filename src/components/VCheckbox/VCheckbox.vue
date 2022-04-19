@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, ref, watch } from '@nuxtjs/composition-api'
+import { computed, defineComponent, ref, watch } from '#app'
 
 import Checkmark from '~/assets/icons/checkmark.svg?inline'
 

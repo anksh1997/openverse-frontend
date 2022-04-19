@@ -18,7 +18,7 @@
   </div>
 </template>
 <script>
-import { computed, provide, ref, watch } from '@nuxtjs/composition-api'
+import { computed, provide, ref, watch } from '#app'
 
 import { useScroll } from '~/composables/use-scroll'
 import { useMatchSearchRoutes } from '~/composables/use-match-routes'

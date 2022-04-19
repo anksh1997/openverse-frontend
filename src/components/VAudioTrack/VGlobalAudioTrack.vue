@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, ref, watch } from '@nuxtjs/composition-api'
+import { computed, defineComponent, ref, watch } from '#app'
 
 import { useActiveAudio } from '~/composables/use-active-audio'
 import { defaultRef } from '~/composables/default-ref'

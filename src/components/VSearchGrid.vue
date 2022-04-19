@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { computed } from '@nuxtjs/composition-api'
+import { computed } from '#app'
 
 import { ALL_MEDIA, IMAGE } from '~/constants/media'
 import { NO_RESULT } from '~/constants/errors'

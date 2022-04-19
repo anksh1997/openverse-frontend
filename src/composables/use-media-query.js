@@ -1,6 +1,6 @@
 /* this implementation is from https://github.com/vueuse/vueuse/packages/core/useMediaQuery/
  which, in turn, is ported from https://github.com/logaretm/vue-use-web by Abdelrahman Awad */
-import { onBeforeUnmount, ref } from '@nuxtjs/composition-api'
+import { onBeforeUnmount, ref } from '#app'
 
 import { SCREEN_SIZES } from '~/constants/screens'
 import { defaultWindow } from '~/composables/window'
@@ -18,7 +18,7 @@ import { defaultWindow } from '~/composables/window'
  * @param {Options} [options]
  */
 export function useMediaQuery(query, options = { shouldPassInSSR: false }) {
-  /** @type {import('@nuxtjs/composition-api').Ref<boolean>} */
+  /** @type {import('#app').Ref<boolean>} */
   const matches = ref(false)
   const { window = defaultWindow } = options
   if (!window) {
@@ -56,7 +56,7 @@ export function useMediaQuery(query, options = { shouldPassInSSR: false }) {
  * or exceeds the provided breakpoint size.
  * @param {'sm'|'md'|'lg'|'xl'|'2xl'} breakpointName
  * @param {Options} [options]
- * @returns {import('@nuxtjs/composition-api').Ref<boolean>}
+ * @returns {import('#app').Ref<boolean>}
  */
 export const isMinScreen = (breakpointName, options) => {
   return useMediaQuery(
@@ -68,7 +68,7 @@ export const isMinScreen = (breakpointName, options) => {
 /**
  * Check if the user prefers reduced motion or not.
  * @param {Options} options
- * @returns {import('@nuxtjs/composition-api').Ref<boolean>}
+ * @returns {import('#app').Ref<boolean>}
  */
 export function useReducedMotion(options) {
   return useMediaQuery('(prefers-reduced-motion: reduce)', options)

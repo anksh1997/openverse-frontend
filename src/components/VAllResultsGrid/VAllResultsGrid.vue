@@ -46,7 +46,9 @@
 </template>
 
 <script>
-import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
+import { computed, defineComponent } from '#app'
+
+import { useI18n } from '~/composables/use-i18n'
 
 import { useMediaStore } from '~/stores/media'
 
@@ -67,7 +69,7 @@ export default defineComponent({
   },
   props: ['canLoadMore'],
   setup(_, { emit }) {
-    const { i18n } = useContext()
+    const i18n = useI18n()
     const mediaStore = useMediaStore()
 
     const onLoadMore = () => {

@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { computed, defineComponent } from '@nuxtjs/composition-api'
+import { computed, defineComponent } from '#app'
 
 import { useMatchHomeRoute } from '~/composables/use-match-routes'
 

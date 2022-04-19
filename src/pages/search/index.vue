@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { useMeta, defineComponent } from '@nuxtjs/composition-api'
+import { useMeta, defineComponent } from '#app'
 
 import { useLoadMore } from '~/composables/use-load-more'
 import { propTypes } from '~/pages/search/search-page.types'

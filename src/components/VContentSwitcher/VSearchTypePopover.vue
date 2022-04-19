@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, ref } from '@nuxtjs/composition-api'
+import { computed, defineComponent, ref } from '#app'
 
 import useSearchType from '~/composables/use-search-type'
 

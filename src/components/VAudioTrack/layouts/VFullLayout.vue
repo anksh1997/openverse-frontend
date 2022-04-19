@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import { computed, defineComponent } from '@nuxtjs/composition-api'
+import { computed, defineComponent } from '#app'
 
 import VDownloadButton from '~/components/VDownloadButton.vue'
 import VLink from '~/components/VLink.vue'

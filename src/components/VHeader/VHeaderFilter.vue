@@ -18,16 +18,9 @@
 </template>
 
 <script>
-import {
-  ref,
-  watch,
-  reactive,
-  computed,
-  onMounted,
-  useContext,
-  inject,
-} from '@nuxtjs/composition-api'
+import { ref, watch, reactive, computed, onMounted, inject } from '#app'
 
+import { useI18n } from '~/composables/use-i18n'
 import { useFilterSidebarVisibility } from '~/composables/use-filter-sidebar-visibility'
 import { useBodyScrollLock } from '~/composables/use-body-scroll-lock'
 
@@ -65,7 +58,7 @@ export default {
     /** @type { import('@nuxtjs/composition-api').Ref<HTMLElement | undefined> } */
     const buttonRef = ref()
     const filterSidebar = useFilterSidebarVisibility()
-    const { i18n } = useContext()
+    const i18n = useI18n()
     /** @type { import('@nuxtjs/composition-api').Ref<boolean> } */
     const isMinScreenMd = inject('isMinScreenMd')
     /** @type { import('@nuxtjs/composition-api').Ref<boolean> } */

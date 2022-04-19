@@ -11,7 +11,7 @@
   </VButton>
 </template>
 <script>
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent } from '#app'
 
 import VIcon from '~/components/VIcon/VIcon.vue'
 import VButton from '~/components/VButton.vue'

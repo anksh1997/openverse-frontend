@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from '@nuxtjs/composition-api'
+import { computed, defineComponent } from '#app'
 
 import { useI18nSync } from '~/composables/use-i18n-sync'
 

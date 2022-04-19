@@ -135,7 +135,7 @@
 
 <script>
 import sortBy from 'lodash.sortby'
-import { computed } from '@nuxtjs/composition-api'
+import { computed } from '#app'
 
 import { useProviderStore } from '~/stores/provider'
 import { useGetLocaleFormattedNumber } from '~/composables/use-get-locale-formatted-number'

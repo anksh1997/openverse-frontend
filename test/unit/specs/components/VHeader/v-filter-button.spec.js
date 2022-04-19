@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/vue'
 import { createLocalVue } from '@vue/test-utils'
 import VueI18n from 'vue-i18n'
-import { ref } from '@nuxtjs/composition-api'
+import { ref } from '#app'
 
 import { createPinia, PiniaVuePlugin } from 'pinia'
 

@@ -21,7 +21,13 @@ COPY .npmrc .
 RUN pnpm install --store=pnpm-store
 
 # copy the rest of the content
-COPY . /usr/app
+COPY src /usr/app/src
+COPY typings /usr/app/typings
+COPY nuxt-template-overrides /usr/app/nuxt-template-overrides
+COPY tsconfig.json /usr/app/tsconfig.json
+COPY nuxt.config.ts /usr/app/nuxt.config.ts
+COPY tailwind.config.js /usr/app/tailwind.config.js
+COPY tailwind.safelist.txt /usr/app/tailwind.safelist.txt
 
 # disable telemetry when building the app
 ENV NUXT_TELEMETRY_DISABLED=1
@@ -44,7 +50,7 @@ ENV NODE_ENV=development
 ENV CYPRESS_INSTALL_BINARY=0
 
 # copy files from local machine
-COPY . /usr/app
+copy . /usr/app
 
 COPY --from=builder /usr/app/pnpm-store /usr/app/pnpm-store
 
@@ -61,6 +67,19 @@ EXPOSE 8443
 ENTRYPOINT [ "pnpm", "run", "dev" ]
 
 # ==
+# nuxt
+# ==
+# nuxt as an isolated runtime dependency
+FROM node:16-alpine AS nuxt
+
+WORKDIR /usr/app
+
+COPY package.json /usr/app/package.json
+
+RUN npm install nuxt@$(node -pe "require('./package.json').dependencies.nuxt")
+
+
+# ==
 # production
 # ==
 # application package (for production)
@@ -68,40 +87,18 @@ FROM node:16-alpine AS app
 
 WORKDIR /usr/app
 
-# Install pnpm
-RUN npm install -g pnpm
-
 ENV NODE_ENV=production
 ENV PLAYWRIGHT_SKIP_BROWSER_GC=1
 
-# copy package.json and package-lock.json files
-COPY package.json .
-COPY pnpm-lock.yaml .
-COPY .npmrc .
+COPY package.json /usr/app/package.json
+COPY nuxt.config.ts /usr/app/nuxt.config.ts
+COPY --from=builder /usr/app/.nuxt/dist /usr/app/.nuxt/dist
+COPY --from=nuxt /usr/app/node_modules /usr/app/node_modules
 
-# copy the nuxt configuration file
-COPY --from=builder /usr/app/nuxt.config.ts .
-
-# copy distribution directory with the static content
-COPY --from=builder /usr/app/.nuxt /usr/app/.nuxt
-
-# copy publically-accessible static assets
-COPY --from=builder /usr/app/src/static /usr/app/src/static
-
-# Copy over files needed by Nuxt's runtime process
-COPY --from=builder /usr/app/src/locales /usr/app/src/locales
-COPY --from=builder /usr/app/src/utils  /usr/app/src/utils
-COPY --from=builder /usr/app/src/constants  /usr/app/src/constants
-COPY --from=builder /usr/app/src/server-middleware  /usr/app/src/server-middleware
-COPY --from=builder /usr/app/pnpm-store /usr/app/pnpm-store
-
-RUN pnpm install --frozen-lockfile --store=pnpm-store
+COPY src /usr/app/src
 
 # set app serving to permissive / assigned
 ENV NUXT_HOST=0.0.0.0
-
-# set app port
-ENV NUXT_PORT=8443
 
 # set application port
 ENV PORT=8443
@@ -109,5 +106,8 @@ ENV PORT=8443
 # expose port 8443 by default
 EXPOSE 8443
 
-# run the application in static mode
-ENTRYPOINT ["pnpm", "run", "start"]
+RUN npm install -g pm2
+
+COPY ecosystem.config.js /usr/app/ecosystem.config.js
+
+CMD ["pm2-runtime", "start", "ecosystem.config.js"]

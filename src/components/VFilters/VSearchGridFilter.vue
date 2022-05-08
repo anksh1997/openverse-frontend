@@ -5,7 +5,7 @@
     class="filters py-8 px-10 min-h-full md:bg-dark-charcoal-06"
   >
     <div class="flex items-center justify-between mt-2 mb-6">
-      <h4 id="filters-heading" class="text-sr font-semibold py-2 uppercase">
+      <h4 id="filters-heading" class="text-sm font-semibold py-2 uppercase">
         {{ $t('filter-list.filter-by') }}
       </h4>
       <button
